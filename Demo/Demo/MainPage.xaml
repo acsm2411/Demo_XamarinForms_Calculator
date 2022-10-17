@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Demo"
+             x:Class="Demo.MainPage">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout >
+        <Frame BackgroundColor="Black" Padding="24" CornerRadius="0">
+            <Label Text="Bienvenidos a la calculadora" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <StackLayout Margin="10,20,10,0">
+            <Label Text="Numero 1:" FontSize="Medium" />
+            <Editor Placeholder="Ingrese un numero"
+                Keyboard="Numeric"
+                Text="{Binding NumberOne}"/>
+            <Label Text="Numero 2:" FontSize="Medium" FontAttributes="Bold" />
+            <Editor Placeholder="Ingrese un numero"
+                Keyboard="Numeric"
+                Text="{Binding NumberTwo}"/>
+            <Label Text="Operacion:" FontSize="Medium"  />
+            <Picker SelectedIndex="{Binding SelectedOperation}" ItemsSource="{x:Static local:MainPage.operations}">
+            </Picker>
+            <Button Text="Ejecutar Operacion" BackgroundColor="Black" TextColor="White" Margin="0,20,0,0" Clicked="ExecuteOperation"></Button>
+            <Button Text="Borrar Valores" Clicked="Reset" ></Button>
+            <Label Text="Resultado:" HorizontalTextAlignment="Center" Margin="0,60,0,0" />
+            <Label Text="{Binding Result}" HorizontalTextAlignment="Center" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
